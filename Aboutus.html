@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Craigslist</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="index.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="index.html"><img src="logo.png" alt="Craigslist"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+                <a class="nav-item nav-link active" href="about.html"><i class="fa-solid fa-file"></i> About Us</a>
+                <a class="nav-item nav-link" href="Account.html" id="account-link"><i class="fa-solid fa-user"></i> Account</a>
+                <button id="darkModeToggle" class="btn btn-outline-secondary ms-3">🌚</i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- About Section -->
+    <div class="container mt-4">
+        <h2 class="text-center mb-4">About Craigslist</h2>
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <!-- Accordion for sections -->
+                <div class="accordion" id="aboutAccordion">
+
+                    <!-- FAQ Section -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingFAQ">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFAQ">
+                                <i class="fa-solid fa-question-circle me-2"></i> Frequently Asked Questions (FAQ)
+                            </button>
+                        </h2>
+                        <div id="collapseFAQ" class="accordion-collapse collapse" data-bs-parent="#aboutAccordion">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li>How much does it cost to make a Craigslist posting?</li>
+                                    <li>How long will my posting stay on the site?</li>
+                                    <li>What are flags and flagging?</li>
+                                    <li>What is CL mail relay?</li>
+                                    <li>How do I find my posting?</li>
+                                    <li>What HTML is supported?</li>
+                                    <li>Why am I getting a DNS error?</li>
+                                    <li>How do I pay for my posting?</li>
+                                    <li>What does the "hold" status mean?</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Privacy Policy Section -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingPrivacy">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsePrivacy">
+                                <i class="fa-solid fa-user-shield me-2"></i> Privacy Policy
+                            </button>
+                        </h2>
+                        <div id="collapsePrivacy" class="accordion-collapse collapse" data-bs-parent="#aboutAccordion">
+                            <div class="accordion-body">
+                                <strong>Craigslist Privacy Policy (updated May 29, 2024)</strong><br>
+                                <p>This policy details how data about you is used when you access our websites and services...</p>
+                                <ul>
+                                    <li>We take precautions to prevent unauthorized access to or misuse of data.</li>
+                                    <li>We do not run ads other than user classifieds.</li>
+                                    <li>We do not share your data with third parties for marketing.</li>
+                                    <li>We do not employ tracking devices for marketing.</li>
+                                    <li>We provide email proxy & relay services to reduce spam.</li>
+                                    <li>Please review third-party privacy policies for linked sites.</li>
+                                    <li>We do not respond to "Do Not Track" signals.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Why We Exist Section -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingExist">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExist">
+                                <i class="fa-solid fa-info-circle me-2"></i> Why We Exist
+                            </button>
+                        </h2>
+                        <div id="collapseExist" class="accordion-collapse collapse" data-bs-parent="#aboutAccordion">
+                            <div class="accordion-body">
+                                <p>Craigslist is a privately held American company operating a classified advertisements website...</p>
+                                <ul>
+                                    <li><strong>Founder:</strong> Craig Newmark</li>
+                                    <li><strong>Founded:</strong> 1995</li>
+                                    <li><strong>Headquarters:</strong> San Francisco, California, United States</li>
+                                    <li><strong>CEO:</strong> Jim Buckmaster (since 2000)</li>
+                                    <li><strong>Languages Available:</strong> English, French, German, Dutch, Spanish, Italian, Portuguese</li>
+                                    <li><strong>Written in:</strong> Perl</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Terms of Use Section -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTerms">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTerms">
+                                <i class="fa-solid fa-file-contract me-2"></i> Terms of Use
+                            </button>
+                        </h2>
+                        <div id="collapseTerms" class="accordion-collapse collapse" data-bs-parent="#aboutAccordion">
+                            <div class="accordion-body">
+                                <p>By accessing or interacting with our services, websites, or mobile app, you agree to these Terms of Use (TOU)...</p>
+                                <p>For full terms, visit: <a href="https://www.craigslist.org/about/terms.of.use" target="_blank">Terms of Use</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Avoiding Scams Section -->
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingScams">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseScams">
+                                <i class="fa-solid fa-shield-alt me-2"></i> Avoiding Scams
+                            </button>
+                        </h2>
+                        <div id="collapseScams" class="accordion-collapse collapse" data-bs-parent="#aboutAccordion">
+                            <div class="accordion-body">
+                                <ul>
+                                    <li>Deal locally, face-to-face to avoid most scams.</li>
+                                    <li>Never provide or accept payment before meeting in person.</li>
+                                    <li>Requests to wire money, use gift cards, or deposit cashier's checks are scams.</li>
+                                    <li>Beware of "guaranteed" transactions or requests for verification codes.</li>
+                                </ul>
+                                <p>For more safety tips, visit: <a href="https://www.craigslist.org/about/scams" target="_blank">Avoiding Scams</a></p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div> <!-- End of Accordion -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer >
+        
+    </footer>
+
+    <!-- Bootstrap Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Update the navbar based on login status
+        function updateNavBar() {
+            const savedIsLoggedIn = localStorage.getItem('isLoggedIn');
+            const savedCurrentUser = localStorage.getItem('currentUser');
+            
+            // Check if the user is logged in
+            if (savedIsLoggedIn === 'true') {
+                document.getElementById('account-link').innerHTML = `<i class="fa-solid fa-user"></i> ${savedCurrentUser}`;
+            } else {
+                document.getElementById('account-link').innerHTML = `<i class="fa-solid fa-user"></i> Account`;
+            }
+        }
+    
+        // Check login status on page load
+        window.onload = function() {
+            updateNavBar();
+            
+            const savedIsLoggedIn = localStorage.getItem('isLoggedIn');
+            const savedCurrentUser = localStorage.getItem('currentUser');
+    
+            // If the user is logged in, update the UI to show user info
+            if (savedIsLoggedIn === 'true' && savedCurrentUser) {
+                isLoggedIn = true;
+                currentUser = savedCurrentUser;
+                showUserInfo();
+            } else {
+                // If not logged in, show the login/signup form
+                document.getElementById('login-signup-form').style.display = 'block';
+                document.getElementById('user-info').style.display = 'none';
+            }
+        }
+    </script>
+<!-- Dark Mode Script -->
+<script src="darkmode.js"></script>
+</body>
+
+</html>

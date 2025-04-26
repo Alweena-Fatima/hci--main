@@ -1,0 +1,117 @@
+/* discussions.css */
+
+/* Add custom styles for the threaded discussions */
+.discussion-thread {
+    margin-left: 20px;
+    border-left: 2px solid #ddd;
+    padding-left: 10px;
+  }
+  
+  .discussion-post {
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #7c97b1;
+    border-radius: 5px;
+  }
+  
+  .post-header {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .post-content {
+    margin-left: 5px;
+  }
+  
+  .post-meta {
+    font-size: 0.8em;
+    color: #666;
+  }
+  
+  .indent-1 { margin-left: 20px; }
+  .indent-2 { margin-left: 40px; }
+  .indent-3 { margin-left: 60px; }
+  .indent-4 { margin-left: 80px; }
+  .indent-5 { margin-left: 100px; }
+  .indent-6 { margin-left: 120px; }
+  
+  .vote-count {
+    display: inline-block;
+    min-width: 30px;
+    text-align: center;
+    font-weight: bold;
+  }
+  
+  .positive-vote { color: green; }
+  .negative-vote { color: red; }
+  
+  .thread-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #eee;
+  }
+  
+  /* Additional styles for the main layout */
+  .navbar-brand img {
+    height: 40px;
+  }
+  
+  .categories-section {
+    background-color: #f8f9fa;
+    border-radius: 5px;
+  }
+  
+  .list-group-item {
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  
+  
+  .filter-sort-section {
+    background-color: #f8f9fa;
+    border-radius: 5px;
+  }
+  
+  #threads .card {
+    transition: transform 0.2s;
+  }
+  
+  #threads .card:hover {
+    transform: translateY(-2px);
+    
+  }
+  
+  .fa-link {
+    color: #007bff;
+    margin-left: 5px;
+  }
+  /* Add to discussionform.css */
+.bg-warning {
+    background-color: #ffc107;
+    padding: 0 2px;
+    border-radius: 3px;
+}
+/* Remove hover effects from discussion posts */
+.discussion-post {
+    pointer-events: none; /* Disables all hover interactions */
+  }
+  
+  /* If you want to keep other interactions but just remove visual changes */
+  .discussion-post:hover {
+    background-color: inherit !important;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+  
+  /* Specifically target child elements if needed */
+  .discussion-post .username:hover,
+  .discussion-post .vote-count:hover,
+  .discussion-post .post-meta:hover,
+  .discussion-post .post-content:hover {
+    color: inherit !important;
+    background-color: transparent !important;
+    text-decoration: none !important;
+  }

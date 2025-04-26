@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Wishlist</title>
+    <!-- Add your CSS links here (same as your main page) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .wishlist-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5rem;
+            color: #ff4757;
+        }
+        .card {
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">My Wishlist</h1>
+        <div id="wishlistContainer" class="row">
+            <!-- Wishlist items will be displayed here -->
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const wishlistContainer = document.getElementById("wishlistContainer");
+            const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+
+
+            function renderWishlist() {
+                wishlistContainer.innerHTML = "";
+               
+                if (wishlist.length === 0) {
+                    wishlistContainer.innerHTML = '<p>Your wishlist is empty.</p>';
+                    return;
+                }
+
+
+                wishlist.forEach(product => {
+                    const card = `
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="card">
+                                <img src="${product.image}" class="card-img-top" alt="${product.name}">
+                                <div class="card-body">
+                                    <h5 class="card-title">${product.name}</h5>
+                                    <p class="card-text left bold">$${product.price}</p>
+                                    <p class="card-text left">${product.bedrooms || 0} BR | ${product.bathrooms || 0} BA</p>
+                                    <p class="card-text left">${product.sqft || 'N/A'} sqft</p>
+                                    <p class="card-text right">${product.date}</p>
+                                    <a href="product_details.html?id=${product.id}" class="btn btn-primary">View Details</a>
+                                    <button class="wishlist-btn remove-btn" data-id="${product.id}">
+                                        <i class="fas fa-heart"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    wishlistContainer.innerHTML += card;
+                });
+
+
+                // Add event listeners to remove buttons
+                document.querySelectorAll('.remove-btn').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const productId = parseInt(button.getAttribute('data-id'));
+                        removeFromWishlist(productId);
+                    });
+                });
+            }
+
+
+            function removeFromWishlist(productId) {
+                const index = wishlist.findIndex(item => item.id === productId);
+                if (index !== -1) {
+                    wishlist.splice(index, 1);
+                    localStorage.setItem('wishlist', JSON.stringify(wishlist));
+                    renderWishlist();
+                }
+            }
+
+
+            renderWishlist();
+        });
+    </script>
+</body>
+</html>
+

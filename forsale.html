@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products Listing - Craigslist</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="index.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="index.html"><img src="logo.png" alt="Craigslist"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link active" href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+                <a class="nav-item nav-link" href="Aboutus.html"><i class="fa-solid fa-file"></i> About Us</a>
+                <a class="nav-item nav-link" href="Account.html" id="account-link"><i class="fa-solid fa-user"></i> Account</a>
+                 <button id="darkModeToggle" class="btn btn-outline-secondary ms-3">🌚</i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main content -->
+    <div class="container-fluid mt-4">
+        <div class="row">
+            <!-- Left Section: Categories (Collapsible) -->
+            <div class="col-lg-2" id="categoriesColumn">
+                <div class="categories-section p-3">
+                    <button id="toggleCategories" class="btn btn-link w-100 text-start">
+                        <i class="fa-solid fa-chevron-down"></i> Community
+                    </button>
+                    <div id="categoriesContent" class="mt-2">
+                        <ul class="list-group">
+                            <li class="list-group-item" data-category="sale">For Sale</li>
+                            <li class="list-group-item" data-category="antiques">Antiques</li>
+                            <li class="list-group-item" data-category="appliances">Appliances</li>
+                            <li class="list-group-item" data-category="arts-crafts">Arts + Crafts</li>
+                            <li class="list-group-item" data-category="atv-utv-sno">ATV/UTV/Snow</li>
+                            <li class="list-group-item" data-category="auto-parts">Auto Parts</li>
+                            <li class="list-group-item" data-category="aviation">Aviation</li>
+                            <li class="list-group-item" data-category="baby-kid">Baby + Kid</li>
+                            <li class="list-group-item" data-category="barter">Barter</li>
+                            <li class="list-group-item" data-category="beauty-hlth">Beauty + Health</li>
+                            <li class="list-group-item" data-category="bike-parts">Bike Parts</li>
+                            <li class="list-group-item" data-category="bikes">Bikes</li>
+                            <li class="list-group-item" data-category="boat-parts">Boat Parts</li>
+                            <li class="list-group-item" data-category="boats">Boats</li>
+                            <li class="list-group-item" data-category="books">Books</li>
+                            <li class="list-group-item" data-category="business">Business</li>
+                            <li class="list-group-item" data-category="cars-trucks">Cars + Trucks</li>
+                            <li class="list-group-item" data-category="cds-dvd-vhs">CDs/DVD/VHS</li>
+                            <li class="list-group-item" data-category="cell-phones">Cell Phones</li>
+                            <li class="list-group-item" data-category="clothes-acc">Clothes + Accessories</li>
+                            <li class="list-group-item" data-category="collectibles">Collectibles</li>
+                            <li class="list-group-item" data-category="computer-parts">Computer Parts</li>
+                            <li class="list-group-item" data-category="computers">Computers</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Section: Filters and Products -->
+            <div class="col-lg-10" id="productsColumn">
+                <h2>Products Listing</h2>
+
+                <!-- Filter and Sort Section -->
+                <div class="filter-sort-section p-4 mb-4">
+                    <div class="filter-header d-flex justify-content-between align-items-center">
+                        <h4>Filters</h4>
+                        <button id="toggleFilters" class="btn btn-link">
+                            <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                    </div>
+                    <div id="filtersContent">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="priceRange">Price Range</label>
+                                <input type="range" id="priceRange" class="form-range" min="0" max="5000" step="100">
+                                <p>Price: ₹<span id="priceValue">0 - 5000</span></p>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="sortBy">Sort By</label>
+                                <select id="sortBy" class="form-select">
+                                    <option value="priceLowHigh">Price: Low to High</option>
+                                    <option value="priceHighLow">Price: High to Low</option>
+                                    <option value="dateNewOld">Date: Newest First</option>
+                                    <option value="dateOldNew">Date: Oldest First</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Cards -->
+                <div class="row" id="productList">
+                    <!-- Product cards will be dynamically inserted here -->
+                </div>
+
+                <!-- Pagination -->
+                <nav aria-label="Page navigation" class="mt-4">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center py-3">
+        Copyright @Craigslist
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="forsale.js"></script>
+    
+    
+    <!-- Dark Mode Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const darkModeToggle = document.getElementById('darkModeToggle');
+  
+            const darkModeStyles = document.createElement('style');
+            darkModeStyles.textContent = `
+                body.dark-mode {
+                    background-color: #121212;
+                    color: #e0e0e0;
+                }
+                nav.navbar.dark-mode {
+                    background-color: #1c2833 !important;
+                }
+                .card.dark-mode, .filter-sort-section.dark-mode, .categories-section.dark-mode {
+                    background-color: #1e1e1e;
+                    border-color: #333;
+                }
+                .card-title.dark-mode, .card-text.dark-mode, .nav-link.dark-mode, label.dark-mode, h2.dark-mode, h4.dark-mode {
+                    color: #e0e0e0 !important;
+                }
+                footer.dark-mode {
+                    background-color: #1f1f1f;
+                    color: #e0e0e0;
+                }
+                .btn-success.dark-mode {
+                    background-color: #22c55e;
+                    border-color: #22c55e;
+                }
+                input.form-control.dark-mode, select.form-select.dark-mode, textarea.form-control.dark-mode {
+                    background-color: #2c2c2c;
+                    color: #e0e0e0;
+                    border: 1px solid #555;
+                }
+                .btn-outline-secondary.dark-mode, .btn-link.dark-mode {
+                    color: #e0e0e0 !important;
+                    border-color: #e0e0e0 !important;
+                }
+                .list-group-item.dark-mode {
+                    background-color: #1f1f1f;
+                    color: #e0e0e0;
+                    border-color: #333;
+                }
+               .list-group-item.dark-mode:hover {
+      background-color: white;
+      color: #1f1f1f; /* darker text so it's readable on white background */
+      border-color: #333;
+  }
+  
+  
+                
+                    
+                .pagination.dark-mode .page-link {
+                    background-color: #2c2c2c;
+                    color: #e0e0e0;
+                    border-color: #555;
+                }
+                    
+            `;
+            document.head.appendChild(darkModeStyles);
+  
+            if (localStorage.getItem('darkMode') === 'enabled') {
+                enableDarkMode();
+            }
+  
+            if (darkModeToggle) {
+                darkModeToggle.addEventListener('click', () => {
+                    toggleDarkMode();
+                });
+            }
+  
+            function toggleDarkMode() {
+                document.body.classList.toggle('dark-mode');
+                document.querySelector('nav.navbar').classList.toggle('dark-mode');
+                document.querySelector('footer').classList.toggle('dark-mode');
+                document.querySelectorAll('.card, .filter-sort-section, .categories-section, .list-group-item, .card-title, .card-text, .nav-link, .form-control, .form-select, .btn-success, label, h2, h4, .btn-link, .pagination').forEach(el => el.classList.toggle('dark-mode'));
+                darkModeToggle.classList.toggle('dark-mode');
+  
+                if (document.body.classList.contains('dark-mode')) {
+                    darkModeToggle.innerHTML = "😎";
+                    localStorage.setItem('darkMode', 'enabled');
+                } else {
+                    darkModeToggle.innerHTML = "🌚";
+                    localStorage.setItem('darkMode', 'disabled');
+                }
+            }
+  
+            function enableDarkMode() {
+                document.body.classList.add('dark-mode');
+                document.querySelector('nav.navbar').classList.add('dark-mode');
+                document.querySelector('footer').classList.add('dark-mode');
+                document.querySelectorAll('.card, .filter-sort-section, .categories-section, .list-group-item, .card-title, .card-text, .nav-link, .form-control, .form-select, .btn-success, label, h2, h4, .btn-link, .pagination').forEach(el => el.classList.add('dark-mode'));
+                darkModeToggle.classList.add('dark-mode');
+                darkModeToggle.innerHTML = "😎";
+            }
+        });
+    </script>
+  
+    <script>
+        function updateNavBar() {
+            const savedIsLoggedIn = localStorage.getItem('isLoggedIn');
+            const savedCurrentUser = localStorage.getItem('currentUser');
+            
+            if (savedIsLoggedIn === 'true') {
+                document.getElementById('account-link').innerHTML = `<i class="fa-solid fa-user"></i> ${savedCurrentUser}`;
+            } else {
+                document.getElementById('account-link').innerHTML = `<i class="fa-solid fa-user"></i> Account`;
+            }
+        }
+  
+        window.onload = function () {
+            updateNavBar();
+        };
+    </script>
+
+</body>
+</html>

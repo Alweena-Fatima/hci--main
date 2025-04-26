@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account - Login or Signup</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="Account.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <!-- Main Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="index.html"><img src="logo.png" alt="Craigslist"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+                <a class="nav-item nav-link active" href="Aboutus.html"><i class="fa-solid fa-file"></i> About Us</a>
+                <a class="nav-item nav-link" href="Account.html" id="account-link"><i class="fa-solid fa-user"></i> Account</a>
+                <button id="darkModeToggle" class="btn btn-outline-secondary ms-3">🌚</i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Account Page -->
+    <div class="container">
+        <div id="login-signup-form">
+            <!-- Sign Up Form -->
+            <div id="signup-form">
+                <h2>Sign Up</h2>
+                <form id="signup" onsubmit="return handleSignup(event)">
+                    <div class="mb-3">
+                        <label for="signup-username" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="signup-username" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="signup-password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="signup-password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Sign Up</button>
+                    <p>Already have an account? <a href="#" onclick="showLoginForm()">Log In</a></p>
+                </form>
+            </div>
+
+            <!-- Log In Form -->
+            <div id="login-form" style="display: none;">
+                <h2>Log In</h2>
+                <form id="login" onsubmit="return handleLogin(event)">
+                    <div class="mb-3">
+                        <label for="login-username" class="form-label">Username</label>
+                        <input type="text" class="form-control" id="login-username" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="login-password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="login-password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Log In</button>
+                    <p>Don't have an account? <a href="#" onclick="showSignupForm()">Sign Up</a></p>
+                </form>
+            </div>
+        </div>
+
+        <!-- User Info After Login -->
+        <div id="user-info" style="display: none;">
+            <h2>Welcome, <span id="username-display"></span></h2>
+            <p>Here you can view and edit your profile, or check your wishlist.</p>
+            <button id="#btnk" class="btn btn-secondary" onclick="location.href='wishlist.html'">View Wishlist</button>
+
+            <button id="#btnk" class="btn btn-danger" onclick="logout()">Log Out</button>
+        </div>
+    </div>
+  <!-- Footer -->
+  <footer >
+        
+  </footer>
+
+  <!-- Bootstrap Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let isLoggedIn = false;
+        let currentUser = null;
+
+        // Function to show the signup form
+        function showSignupForm() {
+            document.getElementById('signup-form').style.display = 'block';
+            document.getElementById('login-form').style.display = 'none';
+        }
+
+        // Function to show the login form
+        function showLoginForm() {
+            document.getElementById('signup-form').style.display = 'none';
+            document.getElementById('login-form').style.display = 'block';
+        }
+
+        // Handle signup logic
+        function handleSignup(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('signup-username').value;
+            const password = document.getElementById('signup-password').value;
+
+            // Store user credentials (username and password) in localStorage
+            localStorage.setItem('username', username);
+            localStorage.setItem('password', password);
+            alert('Signup successful!');
+            showLoginForm(); // Switch to login after signup
+        }
+
+        // Handle login logic
+        function handleLogin(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('login-username').value;
+            const password = document.getElementById('login-password').value;
+
+            // Retrieve saved credentials from localStorage
+            const savedUsername = localStorage.getItem('username');
+            const savedPassword = localStorage.getItem('password');
+
+            if (username === savedUsername && password === savedPassword) {
+                isLoggedIn = true;
+                currentUser = username;
+                // Store login state in localStorage
+                localStorage.setItem('isLoggedIn', 'true');
+                localStorage.setItem('currentUser', username);
+                alert('Login successful!');
+                updateNavBar();
+                showUserInfo();
+            } else {
+                alert('Invalid username or password');
+            }
+        }
+
+        
+
+        // Show user info after login
+        function showUserInfo() {
+            document.getElementById('login-signup-form').style.display = 'none';
+            document.getElementById('user-info').style.display = 'block';
+            document.getElementById('username-display').innerText = currentUser;
+        }
+
+        // Logout function
+        function logout() {
+            isLoggedIn = false;
+            currentUser = null;
+            // Clear only login state from localStorage (don't clear credentials)
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('currentUser');
+            updateNavBar();
+            alert('Logged out successfully');
+            document.getElementById('login-signup-form').style.display = 'block';
+            document.getElementById('user-info').style.display = 'none';
+        }
+
+        // Placeholder function to view wishlist
+        function viewWishlist() {
+            alert('Here is your wishlist!');
+        }
+        // Update the navbar based on login status
+        function updateNavBar() {
+            const savedIsLoggedIn = localStorage.getItem('isLoggedIn');
+            const savedCurrentUser = localStorage.getItem('currentUser');
+            
+            // Check if the user is logged in
+            if (savedIsLoggedIn === 'true') {
+                document.getElementById('account-link').innerHTML = `<i class="fa-solid fa-user"></i> ${savedCurrentUser}`;
+            } else {
+                document.getElementById('account-link').innerHTML = `<i class="fa-solid fa-user"></i> Account`;
+            }
+        }
+    
+        // Check login status on page load
+        window.onload = function() {
+            updateNavBar();
+            
+            const savedIsLoggedIn = localStorage.getItem('isLoggedIn');
+            const savedCurrentUser = localStorage.getItem('currentUser');
+    
+            // If the user is logged in, update the UI to show user info
+            if (savedIsLoggedIn === 'true' && savedCurrentUser) {
+                isLoggedIn = true;
+                currentUser = savedCurrentUser;
+                showUserInfo();
+            } else {
+                // If not logged in, show the login/signup form
+                document.getElementById('login-signup-form').style.display = 'block';
+                document.getElementById('user-info').style.display = 'none';
+            }
+        }
+    </script>
+    <!-- Dark Mode Script -->
+    <script src="darkmode.js"></script>
+
+</body>
+
+</html>
